@@ -195,6 +195,8 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .site-nav-link:hover,
 .site-nav-link:focus {
@@ -202,8 +204,26 @@ body {
 }
 
 .site-nav .current {
+  position: relative;
   color: var(--logo-text-color-blue);
 }
+
+.site-nav .current::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: -1px;
+  left: 0;
+
+  border-radius: 2px;
+
+  z-index: 1;
+
+  background-color: var(--logo-text-color-blue);
+}
+
 /* Контакти */
 .contacts {
   display: flex;
@@ -219,6 +239,8 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts-link:hover,
 .contacts-link:focus {
@@ -292,12 +314,57 @@ body {
   text-align: center;
   letter-spacing: 0.06em;
   font-family: inherit;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
 .hero-button:focus {
   cursor: pointer;
   background-color: var(--hero-button-active);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  /* visibility: visible; */
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: #fff;
+
+  z-index: 100;
+}
+
+.close-modal {
+  border: none;
+  background-color: #fff;
+  padding: 0;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  cursor: pointer;
 }
 
 /* Наші переваги */
@@ -353,8 +420,8 @@ body {
   top: 100%;
   left: 50%;
   transform: translate(-50%, -100%);
-  width: 370px;
-  height: 70px;
+  min-width: 370px;
+  min-height: 70px;
   /* padding-top: 27px;
   padding-bottom: 27px; */
 
@@ -427,6 +494,9 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-container-team:hover,
@@ -476,6 +546,9 @@ body {
 
   width: 100%;
   height: 100%;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-logo-clients {
@@ -538,6 +611,9 @@ body {
 .projects-list-link {
   display: block;
   color: inherit;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .projects-list-link:hover,
@@ -548,10 +624,59 @@ body {
   cursor: pointer;
 }
 
+.projects-list-link:hover .project-description,
+.projects-list-link:focus .project-description {
+  opacity: 1;
+}
+
 .project-image {
   /* margin-bottom: 20px; */
   display: block;
 }
+
+.project-image-description {
+  position: relative;
+}
+
+.projects-list-link:hover .project-image-description::after,
+.projects-list-link:focus .project-image-description::after {
+  opacity: 1;
+}
+
+.project-image-description::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: rgba(33, 150, 243, 0.9);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+
+  opacity: 0;
+}
+
+.project-description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 322px;
+
+  z-index: 2;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 1.56em;
+  letter-spacing: 0.03em;
+
+  color: var(--additional-text-color);
+
+  opacity: 0;
+}
+
 /* ----------------ПОРТФОЛІО (кінець)---------- */
 
 /* Button */
@@ -577,6 +702,10 @@ body {
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.03em;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-button:hover,
 .projects-button:focus {
@@ -604,6 +733,10 @@ body {
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.03em;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-button-all:hover,
 .projects-button-all:focus {
@@ -646,6 +779,8 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   font-weight: 400;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address:hover,
@@ -669,6 +804,8 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   font-weight: 400;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-details-link:hover,
 .contact-details-link:focus {
@@ -701,6 +838,8 @@ body {
   height: 44px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-container-footer:hover,
