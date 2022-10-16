@@ -336,8 +336,6 @@ body {
 /* Чим ми займаємося */
 .work {
   padding-top: 0;
-
-  /* background-color: blueviolet; */
 }
 
 .work-list {
@@ -346,9 +344,35 @@ body {
   column-gap: 30px;
 }
 
-/* .work-img {
-  flex-basis: calc((100% - 60px) / 3);
-} */
+.work-list-item {
+  position: relative;
+}
+
+.work-description {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 370px;
+  height: 70px;
+  /* padding-top: 27px;
+  padding-bottom: 27px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--additional-text-color);
+  background-color: rgba(47, 48, 58, 0.8);
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.143em;
+  /* text-align: center; */
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
 
 /* Наша команда */
 .team {
