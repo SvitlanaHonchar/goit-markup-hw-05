@@ -534,6 +534,7 @@ body {
 .icon-social-item {
   display: block;
   fill: var(--clients-border-color);
+  transition: fill var(--transition-param);
 }
 
 .team-bottom-part {
